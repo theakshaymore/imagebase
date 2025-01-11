@@ -24,6 +24,10 @@ export async function POST(req: NextRequest) {
     if (event.event === "payment.captured") {
       const payment = event.payload.payment.entity;
 
+      console.log(payment);
+
+      const imageUrl = payment; // Replace with logic to get the actual image path.
+
       const order = await Order.findOneAndUpdate(
         { razorpayOrderId: payment.order_id },
         {

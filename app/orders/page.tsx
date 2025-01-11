@@ -17,6 +17,7 @@ export default function OrdersPage() {
     const fetchOrders = async () => {
       try {
         const data = await apiClient.getUserOrders();
+        // console.log("Fetched orders:", data); // Log the data to verify
         setOrders(data);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -93,6 +94,7 @@ export default function OrdersPage() {
                             Resolution: {variantDimensions.width} x{" "}
                             {variantDimensions.height}px
                           </p>
+                          <p>Download link: {order.downloadUrl}</p>
                           <p>
                             License Type:{" "}
                             <span className="capitalize">
