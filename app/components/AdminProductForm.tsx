@@ -51,7 +51,7 @@ export default function AdminProductForm() {
       await apiClient.createProduct(data);
       showNotification("Product created successfully!", "success");
 
-      // Reset form after successful submission
+      // Reset form after successful submissionnnn
       setValue("name", "");
       setValue("description", "");
       setValue("imageUrl", "");
