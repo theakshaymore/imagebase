@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ImageGallery from "./components/ImageGallery";
 import { IProduct } from "@/models/Product";
 import { apiClient } from "@/lib/api-client";
+import Jumbotron from "./components/Jumbotron"; // Import the Jumbotron component
 
 export default function Home() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -21,9 +22,17 @@ export default function Home() {
     fetchProducts();
   }, []);
 
+  const imageUrls = products.map((product) => product.imageUrl); // Extract product images
+
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">ImageBase Shop</h1>
+      {/* Jumbotron Section */}
+      <Jumbotron
+        images={products.map((product) => product.imageUrl)} // Map product images
+        shopName="ImageBase Shop"
+      />
+
+      {/* Product List */}
       <ImageGallery products={products} />
     </main>
   );
