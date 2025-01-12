@@ -34,7 +34,7 @@ export interface IProduct {
   name: string;
   description: string;
   imageUrl: string;
-  category: "nature" | "home";
+  category: "nature" | "home" | undefined;
   variants: ImageVariant[];
 }
 

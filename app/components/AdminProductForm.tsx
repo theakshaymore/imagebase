@@ -55,7 +55,7 @@ export default function AdminProductForm() {
       setValue("name", "");
       setValue("description", "");
       setValue("imageUrl", "");
-      setValue("category", "nature");
+      setValue("category", "nature" as "nature" | "home");
       setValue("variants", [
         {
           type: "SQUARE" as ImageVariantType,
