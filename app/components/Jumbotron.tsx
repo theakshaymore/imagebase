@@ -11,7 +11,7 @@ export default function Jumbotron() {
       {/* Single Image Display */}
       <div className="w-full h-64 relative">
         <img
-          src={image}
+          src="/imagess/imagess02.jpg"
           alt="Jumbotron Image"
           className="w-full h-full object-cover"
         />
