@@ -24,7 +24,7 @@ export default function AdminProductForm() {
       name: "",
       description: "",
       imageUrl: "",
-      category: "",
+      category: "nature",
       variants: [
         {
           type: "SQUARE",
@@ -55,7 +55,7 @@ export default function AdminProductForm() {
       setValue("name", "");
       setValue("description", "");
       setValue("imageUrl", "");
-      setValue("category", "");
+      setValue("category", "nature");
       setValue("variants", [
         {
           type: "SQUARE" as ImageVariantType,
