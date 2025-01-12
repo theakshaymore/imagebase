@@ -24,9 +24,10 @@ export default function AdminProductForm() {
       name: "",
       description: "",
       imageUrl: "",
+      category: "",
       variants: [
         {
-          type: "SQUARE" as ImageVariantType,
+          type: "SQUARE",
           price: 5.0,
           license: "personal",
         },
@@ -54,6 +55,7 @@ export default function AdminProductForm() {
       setValue("name", "");
       setValue("description", "");
       setValue("imageUrl", "");
+      setValue("category", "");
       setValue("variants", [
         {
           type: "SQUARE" as ImageVariantType,
@@ -73,6 +75,7 @@ export default function AdminProductForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Product Name */}
       <div className="form-control">
         <label className="label">Product Name</label>
         <input
@@ -85,6 +88,7 @@ export default function AdminProductForm() {
         )}
       </div>
 
+      {/* Description */}
       <div className="form-control">
         <label className="label">Description</label>
         <textarea
@@ -100,6 +104,29 @@ export default function AdminProductForm() {
         )}
       </div>
 
+      {/* Category */}
+      <div className="form-control">
+        <label className="label">Category</label>
+        <select
+          className={`select select-bordered ${
+            errors.category ? "input-error" : ""
+          }`}
+          {...register("category", { required: "Category is required" })}
+        >
+          {["nature", "home"].map((category) => (
+            <option key={category} value={category}>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </option>
+          ))}
+        </select>
+        {errors.category && (
+          <span className="text-error text-sm mt-1">
+            {errors.category.message}
+          </span>
+        )}
+      </div>
+
+      {/* Product Image */}
       <div className="form-control">
         <label className="label">Product Image</label>
         <FileUpload onSuccess={handleUploadSuccess} />
@@ -107,9 +134,11 @@ export default function AdminProductForm() {
 
       <div className="divider">Image Variants</div>
 
+      {/* Variants Section */}
       {fields.map((field, index) => (
         <div key={field.id} className="card bg-base-200 p-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Variant Size & Aspect Ratio */}
             <div className="form-control">
               <label className="label">Size & Aspect Ratio</label>
               <select
@@ -125,6 +154,7 @@ export default function AdminProductForm() {
               </select>
             </div>
 
+            {/* Variant License */}
             <div className="form-control">
               <label className="label">License</label>
               <select
@@ -136,6 +166,7 @@ export default function AdminProductForm() {
               </select>
             </div>
 
+            {/* Variant Price */}
             <div className="form-control">
               <label className="label">Price (₹)</label>
               <input
@@ -159,6 +190,7 @@ export default function AdminProductForm() {
               )}
             </div>
 
+            {/* Remove Variant Button */}
             <div className="flex items-end">
               <button
                 type="button"
@@ -173,6 +205,7 @@ export default function AdminProductForm() {
         </div>
       ))}
 
+      {/* Add Variant Button */}
       <button
         type="button"
         className="btn btn-outline btn-block"
@@ -188,6 +221,7 @@ export default function AdminProductForm() {
         Add Variant
       </button>
 
+      {/* Submit Button */}
       <button
         type="submit"
         className="btn btn-primary btn-block"

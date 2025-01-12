@@ -34,6 +34,7 @@ export interface IProduct {
   name: string;
   description: string;
   imageUrl: string;
+  category: "nature" | "home";
   variants: ImageVariant[];
 }
 
@@ -60,6 +61,10 @@ const productSchema = new Schema<IProduct>(
     name: { type: String, required: true },
     description: { type: String, required: true },
     imageUrl: { type: String, required: true },
+    category: {
+      type: String,
+      enum: ["nature", "home"], // Ensure "personal" is here
+    },
     variants: [imageVariantSchema],
   },
   { timestamps: true }
